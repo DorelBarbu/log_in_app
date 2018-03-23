@@ -14,7 +14,6 @@ class LoginForm extends Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Card>
                 <CardSection>

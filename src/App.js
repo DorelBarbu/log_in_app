@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
 import reducers from './reducers';
 import LoginForm from './components/LoginForm';
+import ReduxThunk from 'redux-thunk';
 class App extends Component {
 
     componentWillMount() {
@@ -20,8 +21,9 @@ class App extends Component {
     }
 
     render() {
+        store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
         return (
-            <Provider store={createStore(reducers)}>
+            <Provider store={store}>
                 <View>
                     <LoginForm />
                 </View>
